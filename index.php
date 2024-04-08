@@ -35,10 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Удаляем куки, указывая время устаревания в прошлом.
     setcookie('fio_error', '', 100000);
     setcookie('fio_value', '', 100000);
+    // Выводим сообщение.
+    $messages[] = '<div class="error">Заполните имя.</div>';
+  }
+  if ($errors['date']) {
+    // Удаляем куки, указывая время устаревания в прошлом.
     setcookie('date_error', '', 100000);
     setcookie('date_value', '', 100000);
     // Выводим сообщение.
-    $messages[] = '<div class="error">Заполните имя.</div>';
+    $messages[] = '<div class="error">Выберите дату.</div>';
   }
   // TODO: тут выдать сообщения об ошибках в других полях.
 
