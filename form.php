@@ -25,6 +25,7 @@ if (!empty($messages)) {
 
     <form action="" method="POST">
       <input name="fio" <?php if ($errors['fio']) {print 'class="error"';} ?> value="<?php print $values['fio']; ?>" />
+      <input type=date name="date" <?php if ($errors['date']) {print 'class="error"';} ?> value="<?php print $values['date']; ?>" />
       <input type="submit" value="ok" />
     </form>
   </body>
