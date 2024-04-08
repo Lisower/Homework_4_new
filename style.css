@@ -49,3 +49,6 @@ Form input,textarea,select{
     background: rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
+.error {
+  border: 2px solid red;
+}
