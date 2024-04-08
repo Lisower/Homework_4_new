@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Удаляем куки, указывая время устаревания в прошлом.
     setcookie('fio_error', '', 100000);
     setcookie('fio_value', '', 100000);
+    setcookie('date_error', '', 100000);
+    setcookie('date_value', '', 100000);
     // Выводим сообщение.
     $messages[] = '<div class="error">Заполните имя.</div>';
   }
@@ -42,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   // Складываем предыдущие значения полей в массив, если есть.
   $values = array();
   $values['fio'] = empty($_COOKIE['fio_value']) ? '' : $_COOKIE['fio_value'];
+  $values['date'] = empty($_COOKIE['date_value']) ? '' : $_COOKIE['date_value'];
   // TODO: аналогично все поля.
 
   // Включаем содержимое файла form.php.
@@ -58,8 +61,14 @@ else {
     setcookie('fio_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
+  if (empty($_POST['date'])) {
+    // Выдаем куку на день с флажком об ошибке в поле fio.
+    setcookie('date_error', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
   // Сохраняем ранее введенное в форму значение на месяц.
   setcookie('fio_value', $_POST['fio'], time() + 30 * 24 * 60 * 60);
+  setcookie('date_value', $_POST['date'], time() + 30 * 24 * 60 * 60);
 
 // *************
 // TODO: тут необходимо проверить правильность заполнения всех остальных полей.
@@ -74,6 +83,7 @@ else {
   else {
     // Удаляем Cookies с признаками ошибок.
     setcookie('fio_error', '', 100000);
+    setcookie('date_error', '', 100000);
     // TODO: тут необходимо удалить остальные Cookies.
   }
 
