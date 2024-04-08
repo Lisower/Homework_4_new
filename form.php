@@ -1,12 +1,12 @@
 <html>
   <head>
-    <style>
-/* Сообщения об ошибках и поля с ошибками выводим с красным бордюром. */
-.error {
-  border: 2px solid red;
-}
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <title>ФОРМА</title>
   </head>
+  
   <body>
 
 <?php
