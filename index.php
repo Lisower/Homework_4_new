@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
    if ($errors['phone_number_error']) {
     setcookie('phone_number_error', '', 100000);
     setcookie('phone_number_value', '', 100000);
-    $messages[] = '<div class="error">Недопустимый номер телевона! Допустимые символы: цифры 0-9</div>';
+    $messages[] = '<div class="error">Недопустимый номер телефона! Допустимые символы: цифры 0-9</div>';
   }
 
   // Складываем предыдущие значения полей в массив, если есть.
