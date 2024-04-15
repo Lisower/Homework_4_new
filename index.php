@@ -26,26 +26,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   // Складываем признак ошибок в массив.
   $errors = array();
-  $errors['fio'] = !empty($_COOKIE['fio_error']);
-  $errors['date'] = !empty($_COOKIE['date_error']);
-  // TODO: аналогично все поля.
+  
+  $errors['FIO_empty'] = !empty($_COOKIE['FIO_empty']);
+  $errors['FIO_error'] = !empty($_COOKIE['FIO_error']);
+  
+  $errors['phone_number_empty'] = !empty($_COOKIE['phone_number_empty']);
+  $errors['phone_number_error'] = !empty($_COOKIE['phone_number_error']);
+  
+  $errors['e_mail'] = !empty($_COOKIE['e_mail']);
+  $errors['birthday'] = !empty($_COOKIE['birthday']);
+  $errors['sex'] = !empty($_COOKIE['sex']);
+  $errors['favourite_languages'] = !empty($_COOKIE['favourite_languages']);
+  $errors['biography'] = !empty($_COOKIE['biography']);
+  $errors['check'] = !empty($_COOKIE['check']);
 
-  // Выдаем сообщения об ошибках.
-  if ($errors['fio']) {
-    // Удаляем куки, указывая время устаревания в прошлом.
-    setcookie('fio_error', '', 100000);
-    setcookie('fio_value', '', 100000);
-    // Выводим сообщение.
-    $messages[] = '<div class="error">Заполните имя.</div>';
+  if ($errors['FIO_empty']) {
+    setcookie('FIO_empty', '', 100000);
+    setcookie('FIO_value', '', 100000);
+    $messages[] = '<div class="error">Заполните имя!</div>';
   }
-  if ($errors['date']) {
-    // Удаляем куки, указывая время устаревания в прошлом.
-    setcookie('date_error', '', 100000);
-    setcookie('date_value', '', 100000);
-    // Выводим сообщение.
-    $messages[] = '<div class="error">Выберите дату.</div>';
+  if ($errors['FIO_error']) {
+    setcookie('FIO_error', '', 100000);
+    setcookie('FIO_value', '', 100000);
+    $messages[] = '<div class="error">Недопустимое имя! Допустимые символы: буквы английского и русского алфавитов</div>';
   }
-  // TODO: тут выдать сообщения об ошибках в других полях.
+  
+  if ($errors['phone_number_empty']) {
+    setcookie('phone_number_empty', '', 100000);
+    setcookie('phone_number_value', '', 100000);
+    $messages[] = '<div class="error">Введите номер телефона!</div>';
+  }
+   if ($errors['phone_number_error']) {
+    setcookie('phone_number_error', '', 100000);
+    setcookie('phone_number_value', '', 100000);
+    $messages[] = '<div class="error">Недопустимый номер телевона! Допустимые символы: цифры 0-9</div>';
+  }
 
   // Складываем предыдущие значения полей в массив, если есть.
   $values = array();
@@ -62,19 +77,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 else {
   // Проверяем ошибки.
   $errors = FALSE;
-  if (empty($_POST['fio'])) {
-    // Выдаем куку на день с флажком об ошибке в поле fio.
-    setcookie('fio_error', '1', time() + 24 * 60 * 60);
+  if (empty($_POST['FIO'])) {
+    setcookie('FIO_empty', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  if (empty($_POST['date'])) {
-    // Выдаем куку на день с флажком об ошибке в поле fio.
-    setcookie('date_error', '1', time() + 24 * 60 * 60);
+  if (!preg_match('/^[a-zA-ZйцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ]+$/', $_POST['FIO'])) {
+    setcookie('FIO_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
+  if (empty($_POST['phone_number'])) {
+    setcookie('phone_number_empty', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  if (!is_numeric($_POST['phone_number']) || !preg_match('/^\d+$/', $_POST['phone_number'])) {
+    setcookie('phone_number_error', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  
   // Сохраняем ранее введенное в форму значение на месяц.
-  setcookie('fio_value', $_POST['fio'], time() + 30 * 24 * 60 * 60);
-  setcookie('date_value', $_POST['date'], time() + 30 * 24 * 60 * 60);
+  setcookie('FIO_value', $_POST['FIO'], time() + 30 * 24 * 60 * 60);
+  setcookie('phone_number_value', $_POST['phone_number'], time() + 30 * 24 * 60 * 60);
 
 // *************
 // TODO: тут необходимо проверить правильность заполнения всех остальных полей.
@@ -88,8 +110,11 @@ else {
   }
   else {
     // Удаляем Cookies с признаками ошибок.
-    setcookie('fio_error', '', 100000);
-    setcookie('date_error', '', 100000);
+    setcookie('FIO_empty', '', 100000);
+    setcookie('FIO_error', '', 100000);
+    
+    setcookie('phone_number_empty', '', 100000);
+    setcookie('phone_number_error', '', 100000);
     // TODO: тут необходимо удалить остальные Cookies.
   }
 
