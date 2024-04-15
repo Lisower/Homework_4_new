@@ -33,7 +33,7 @@ if (!empty($messages)) {
                     ФИО<br>
                     <input name="FIO"
                     placeholder="Введите Ваше ФИО"
-                    required>
+                    >
                 </label><br>
 
                 <label>
@@ -41,7 +41,7 @@ if (!empty($messages)) {
                 <input name="phone_number"
                     type="tel"
                     placeholder="Введите Ваш номер телефона"
-                    required>
+                    >
                 </label><br>
 
                 <label>
@@ -49,14 +49,14 @@ if (!empty($messages)) {
                 <input name="e_mail"
                     type="email"
                     placeholder="Введите Вашу почту"
-                    required>
+                    >
                 </label><br>
 
                 <label>
                     Дата рождения<br>
                     <input name="birthday"
                     type="date"
-                    required>
+                    >
                 </label><br>
                 
                 Пол<br>
@@ -69,7 +69,7 @@ if (!empty($messages)) {
 
                 <label>
                     Любимый язык программирования<br>
-                    <select name="favourite_languages[]" required
+                    <select name="favourite_languages[]"
                         multiple="multiple">
                         <option value="1">Pascal</option>
                         <option value="2">C</option>
