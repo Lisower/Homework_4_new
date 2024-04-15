@@ -33,6 +33,7 @@ if (!empty($messages)) {
                     ФИО<br>
                     <input name="FIO"
                     placeholder="Введите Ваше ФИО"
+                    <?php if ($errors['FIO_empty'] || $errors['FIO_error']) {print 'class="error"';} ?> value="<?php print $values['FIO']; ?>
                     >
                 </label><br>
 
@@ -41,6 +42,7 @@ if (!empty($messages)) {
                 <input name="phone_number"
                     type="tel"
                     placeholder="Введите Ваш номер телефона"
+                    <?php if ($errors['phone_number_empty'] || $errors['phone_number_error']) {print 'class="error"';} ?> value="<?php print $values['phone_number']; ?>
                     >
                 </label><br>
 
