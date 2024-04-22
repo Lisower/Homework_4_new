@@ -141,7 +141,7 @@ else {
     setcookie('birthday_empty', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  if (strtodate($_POST['birthday']) === false) {
+  if (strtotime($_POST['birthday']) === false) {
     setcookie('birthday_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
