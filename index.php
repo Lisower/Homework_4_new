@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     setcookie('FIO_value', '', 100000);
     $messages[] = '<div class="error">Заполните имя!</div>';
   }
-  if ($errors['FIO_error'] $$ !$errors['FIO_empty']) {
+  if ($errors['FIO_error'] && !$errors['FIO_empty']) {
     setcookie('FIO_error', '', 100000);
     setcookie('FIO_value', '', 100000);
     $messages[] = '<div class="error">Недопустимое имя! Допустимые символы: буквы английского и русского алфавитов</div>';
