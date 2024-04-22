@@ -155,7 +155,7 @@ else {
   }
   if (strtotime($_POST['birthday']) === false) {
     setcookie('birthday_error', '1', time() + 24 * 60 * 60);
-    print(strtotime($_POST['birthday']))
+    print(strtotime($_POST['birthday']));
     $errors = TRUE;
   }
 
