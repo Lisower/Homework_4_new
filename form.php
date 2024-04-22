@@ -59,6 +59,7 @@ if (!empty($messages)) {
                     Дата рождения<br>
                     <input name="birthday"
                     type="date"
+                    <?php if ($errors['birthday_empty'] || $errors['birthday_error']) {print 'class="error"';} ?> value="<?php print $values['birthday']; ?>"
                     >
                 </label><br>
                 
