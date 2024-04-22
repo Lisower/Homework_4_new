@@ -95,7 +95,7 @@ if (!empty($messages)) {
                 </label><br>
 
                 <label><input type="checkbox"
-                    name="check" required>
+                    name="check">
                     С контрактом ознакомлен
                 </label><br>
 
