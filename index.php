@@ -195,8 +195,8 @@ else {
     setcookie('e_mail_empty', '', 100000);
     setcookie('e_mail_error', '', 100000);
 
-    setcookie('birthday_empty', '', 100000);
-    setcookie('birthday_error', '', 100000);
+    //setcookie('birthday_empty', '', 100000);
+    //setcookie('birthday_error', '', 100000);
 
     setcookie('sex_empty', '', 100000);
     setcookie('sex_error', '', 100000);
