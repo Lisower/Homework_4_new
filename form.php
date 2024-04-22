@@ -51,6 +51,7 @@ if (!empty($messages)) {
                 <input name="e_mail"
                     type="email"
                     placeholder="Введите Вашу почту"
+                    <?php if ($errors['e_mail_empty'] || $errors['e_mail_error']) {print 'class="error"';} ?> value="<?php print $values['e_mail']; ?>"
                     >
                 </label><br>
 
