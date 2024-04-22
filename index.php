@@ -120,7 +120,7 @@ else {
     setcookie('e_mail_empty', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]+$/', $_POST['e_mail'])) {
+  if (!preg_match('/^[a-zA-Z0-9_%+-]+@[a-zA-Z0-9-]+.[a-zA-Z]+$/', $_POST['e_mail'])) {
     setcookie('e_mail_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
