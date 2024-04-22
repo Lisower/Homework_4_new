@@ -155,6 +155,7 @@ else {
   }
   if (strtotime($_POST['birthday']) === false) {
     setcookie('birthday_error', '1', time() + 24 * 60 * 60);
+    print(strtotime($_POST['birthday']))
     $errors = TRUE;
   }
 
@@ -162,7 +163,7 @@ else {
     setcookie('sex_empty', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  if (!preg_match('/^[МЖ]+$/', $_POST['sex'])) {
+  if (!preg_match('/^[МЖ]+$/u', $_POST['sex'])) {
     setcookie('sex_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
