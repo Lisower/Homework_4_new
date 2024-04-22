@@ -81,11 +81,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages[] = '<div class="error">Недопустимая почта! Формат почты: example@example.com</div>';
   }
 
+  if ($errors['birthday_empty']) {
+    setcookie('birthday_empty', '', 100000);
+    setcookie('birthday_value', '', 100000);
+    $messages[] = '<div class="error">Выберите день рождения!</div>';
+  }
+  if ($errors['birthday_error'] && !$errors['birthday_empty']) {
+    setcookie('birthday_error', '', 100000);
+    setcookie('birthday_value', '', 100000);
+    $messages[] = '<div class="error">Недопустимый день рождения! День рождения должен быть датой!</div>';
+  }
+
   // Складываем предыдущие значения полей в массив, если есть.
   $values = array();
   $values['FIO'] = empty($_COOKIE['FIO_value']) ? '' : $_COOKIE['FIO_value'];
   $values['phone_number'] = empty($_COOKIE['phone_number_value']) ? '' : $_COOKIE['phone_number_value'];
   $values['e_mail'] = empty($_COOKIE['e_mail_value']) ? '' : $_COOKIE['e_mail_value'];
+  $values['birthday'] = empty($_COOKIE['birthday_value']) ? '' : $_COOKIE['birthday_value'];
   // TODO: аналогично все поля.
 
   // Включаем содержимое файла form.php.
@@ -124,10 +136,21 @@ else {
     setcookie('e_mail_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
+
+  if (empty($_POST['birthday'])) {
+    setcookie('birthday_empty', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  if (strtodate($_POST['birthday']) === false) {
+    setcookie('birthday_error', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
+  
   // Сохраняем ранее введенное в форму значение на месяц.
   setcookie('FIO_value', $_POST['FIO'], time() + 30 * 24 * 60 * 60);
   setcookie('phone_number_value', $_POST['phone_number'], time() + 30 * 24 * 60 * 60);
   setcookie('e_mail_value', $_POST['e_mail'], time() + 30 * 24 * 60 * 60);
+  setcookie('birthday_value', $_POST['birthday'], time() + 30 * 24 * 60 * 60);
 
 // *************
 // TODO: тут необходимо проверить правильность заполнения всех остальных полей.
@@ -149,6 +172,9 @@ else {
 
     setcookie('e_mail_empty', '', 100000);
     setcookie('e_mail_error', '', 100000);
+
+    setcookie('birthday_empty', '', 100000);
+    setcookie('birthday_error', '', 100000);
     // TODO: тут необходимо удалить остальные Cookies.
   }
 
