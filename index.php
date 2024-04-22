@@ -154,7 +154,7 @@ else {
     $errors = TRUE;
   }
   if (strtotime($_POST['birthday']) === false) {
-    setcookie('birthday_error', $_POST['birthday'], time() + 24 * 60 * 60);
+    setcookie('birthday_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
 
@@ -162,7 +162,7 @@ else {
     setcookie('sex_empty', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  if (!preg_match('/^[МЖ]+$/u', $_POST['sex'])) {
+  if (!preg_match('/^[МЖ]+$/', $_POST['sex'])) {
     setcookie('sex_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
@@ -195,8 +195,8 @@ else {
     setcookie('e_mail_empty', '', 100000);
     setcookie('e_mail_error', '', 100000);
 
-    //setcookie('birthday_empty', '', 100000);
-    //setcookie('birthday_error', '', 100000);
+    setcookie('birthday_empty', '', 100000);
+    setcookie('birthday_error', '', 100000);
 
     setcookie('sex_empty', '', 100000);
     setcookie('sex_error', '', 100000);
