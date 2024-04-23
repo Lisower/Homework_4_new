@@ -93,13 +93,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 
   if ($errors['sex_empty']) {
-    setcookie('birthday_empty', '', 100000);
-    setcookie('birthday_value', '', 100000);
+    setcookie('sex_empty', '', 100000);
+    setcookie('sex_value', '', 100000);
     $messages[] = '<div class="error">Выберите пол!</div>';
   }
-  if ($errors['birthday_error'] && !$errors['birthday_empty']) {
-    setcookie('birthday_error', '', 100000);
-    setcookie('birthday_value', '', 100000);
+  if ($errors['sex_error'] && !$errors['sex_empty']) {
+    setcookie('sex_error', '', 100000);
+    setcookie('sex_value', '', 100000);
     $messages[] = '<div class="error">Недопустимый пол! Выберите пол: М или Ж</div>';
   }
 
