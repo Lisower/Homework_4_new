@@ -217,8 +217,7 @@ else {
 
   }
 
-  $user = 'u67447';
-  $pass = '5579779';
+  include(.gitignore)
   $db = new PDO('mysql:host=localhost;dbname=u67447', $user, $pass,
     [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
   
