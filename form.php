@@ -18,9 +18,6 @@ if (!empty($messages)) {
   }
   print('</div>');
 }
-
-// Далее выводим форму отмечая элементы с ошибками классом error
-// и задавая начальные значения элементов ранее сохраненными.
 ?>
 
     <button id="Button">Открыть форму</button>
@@ -92,7 +89,7 @@ if (!empty($messages)) {
                 <label>
                     Биография<br>
                     <textarea name="biography" placeholder="Напишите Вашу биографию"
-                      <?php if ($errors['biography_long'] || $errors['biography_error']) {print 'class="error"';} ?> value="<?php print $values['biography']; ?>"
+                      <?php if ($errors['biography_long'] || $errors['biography_error']) {print 'class="error"';} ?> value="<?php print $values['FIO']; ?>"
                       >
                     </textarea>
                 </label><br>
