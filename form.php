@@ -89,7 +89,7 @@ if (!empty($messages)) {
                 <label>
                     Биография<br>
                     <textarea name="biography" placeholder="Напишите Вашу биографию"
-                      <?php if ($errors['biography_long'] || $errors['biography_error']) {print 'class="error"';} ?>>
+                      >
                     </textarea>
                 </label><br>
 
