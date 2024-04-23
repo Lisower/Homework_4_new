@@ -51,5 +51,4 @@ Form input,textarea,select{
 }
 .error {
   border: 2px solid red;
-  outline: 2px solid red;
 }
