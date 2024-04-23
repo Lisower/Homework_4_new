@@ -217,8 +217,25 @@ else {
 
   }
 
-  // Сохранение в БД.
-  // ...
+  $user = 'u67447';
+  $pass = '5579779';
+  $db = new PDO('mysql:host=localhost;dbname=u67447', $user, $pass,
+    [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+  
+  try {
+    $stmt = $db->prepare(
+      "INSERT INTO Applications SET FIO = ?, phone_number = ?, e_mail = ?, birthday = ?, sex = ?, biography = ?");
+    $stmt->execute([$_POST['FIO'],$_POST['phone_number'],$_POST['e_mail'],$_POST['birthday'],$_POST['sex'],$_POST['biography']]);
+    $application_id = $db->lastInsertId();
+    $stmt = $db->prepare("INSERT INTO Application_languages (application_id, language_id) VALUES (?, ?)");
+    foreach ($_POST['favourite_languages'] as $language_id) {
+        $stmt->execute([$application_id, $language_id]); 
+    }
+  }
+  catch(PDOException $e){
+    print('Error : ' . $e->getMessage());
+    exit();
+  }
 
   setcookie('save', '1');
 
