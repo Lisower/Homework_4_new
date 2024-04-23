@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if ($errors['check_empty']) {
     setcookie('check_empty', '', 100000);
     setcookie('check_value', '', 100000);
-    $messages[] = '<div class="error">Согласие не отмечено!" Поставьте галочку!</div>';
+    $messages[] = '<div class="error">Согласие не отмечено! Поставьте галочку!</div>';
   }
 
   $values = array();
