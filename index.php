@@ -100,6 +100,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages[] = '<div class="error">В биографии использованы недопустимы символы! Допустимы только буквы, цифры и знаки препинания!</div>';
   }
 
+  if ($errors['check_empty']) {
+    setcookie('check_empty', '', 100000);
+    setcookie('check_value', '', 100000);
+    $messages[] = '<div class="error">Согласие не отмечено!" Поставьте галочку!</div>';
+  }
+
   $values = array();
   $values['FIO'] = empty($_COOKIE['FIO_value']) ? '' : $_COOKIE['FIO_value'];
   $values['phone_number'] = empty($_COOKIE['phone_number_value']) ? '' : $_COOKIE['phone_number_value'];
@@ -107,6 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['birthday'] = empty($_COOKIE['birthday_value']) ? '' : $_COOKIE['birthday_value'];
   $values['sex'] = empty($_COOKIE['sex_value']) ? '' : $_COOKIE['sex_value'];
   $values['biography'] = empty($_COOKIE['biography_value']) ? '' : $_COOKIE['biography_value'];
+  $values['biography'] = empty($_COOKIE['check_value']) ? '' : $_COOKIE['check_value'];
 
   include('form.php');
 }
@@ -168,6 +175,11 @@ else {
     setcookie('biography_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
+
+  if (empty($_POST['check'])) {
+    setcookie('check_empty', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+  }
   
   setcookie('FIO_value', $_POST['FIO'], time() + 30 * 24 * 60 * 60);
   setcookie('phone_number_value', $_POST['phone_number'], time() + 30 * 24 * 60 * 60);
@@ -175,6 +187,7 @@ else {
   setcookie('birthday_value', $_POST['birthday'], time() + 30 * 24 * 60 * 60);
   setcookie('sex_value', $_POST['sex'], time() + 30 * 24 * 60 * 60);
   setcookie('biography_value', $_POST['biography'], time() + 30 * 24 * 60 * 60);
+  setcookie('check_value', $_POST['check'], time() + 30 * 24 * 60 * 60);
 
   if ($errors) {
     header('Location: index.php');
@@ -199,6 +212,8 @@ else {
 
     setcookie('biography_long', '', 100000);
     setcookie('biography_error', '', 100000);
+
+    setcookie('check_empty', '', 100000);
 
   }
 
