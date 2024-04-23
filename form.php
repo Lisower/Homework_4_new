@@ -65,13 +65,14 @@ if (!empty($messages)) {
                 
                 Пол<br>
                 <label><input type="radio"
-                name="sex" value="М" %%checked="checked"
+                name="sex" value="М"
                 <?php if ($errors['sex_empty'] || $errors['sex_error']) {print 'class="error"';} ?>
                 >
                 М</label>
                 <label><input type="radio"
-                name="sex" value="Ж">
+                name="sex" value="Ж"
                 <?php if ($errors['sex_empty'] || $errors['sex_error']) {print 'class="error"';} ?>
+                >
                 Ж</label><br>
 
                 <label>
