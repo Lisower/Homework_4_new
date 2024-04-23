@@ -164,7 +164,7 @@ else {
     setcookie('biography_long', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  if (!preg_match('/^[a-zA-ZйцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ0-9.,;:?!%()-+=@#$^/]+$/', $_POST['biography'])) {
+  if (!preg_match('/^[a-zA-ZйцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ0-9.,?! ]+$/', $_POST['biography'])) {
     setcookie('biography_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
