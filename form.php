@@ -93,8 +93,8 @@ if (!empty($messages)) {
                     </textarea>
                 </label><br>
 
-                <label><input type="checkbox"
-                    name="check">
+                <label <?php if ($errors['check_empty']) {print 'class="error"';} ?>>
+                  <input type="checkbox" name="check" <?php if ($values['sex'] === "Ж") {print 'checked="checked"';} ?>>
                     С контрактом ознакомлен
                 </label><br>
 
