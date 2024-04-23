@@ -64,14 +64,11 @@ if (!empty($messages)) {
                 </label><br>
                 
                 Пол<br>
-                <label <?php if ($errors['sex_empty'] || $errors['sex_error']) {print 'class="error"';} ?>><input type="radio"
-                name="sex" value="М"
-                >
+                <label <?php if ($errors['sex_empty'] || $errors['sex_error']) {print 'class="error"';} ?>>
+                  <input type="radio" name="sex" value="М" <?php if ($values['sex_value'] === "М") {print 'checked="checked"';} ?>>
                 М</label>
-                <label><input type="radio"
-                name="sex" value="Ж"
-                <?php if ($errors['sex_empty'] || $errors['sex_error']) {print 'class="error"';} ?>
-                >
+                <label <?php if ($errors['sex_empty'] || $errors['sex_error']) {print 'class="error"';} ?>>
+                  <input type="radio" name="sex" value="Ж" <?php if ($values['sex_value'] === "Ж") {print 'checked="checked"';} ?>>
                 Ж</label><br>
 
                 <label>
