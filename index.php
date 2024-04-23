@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['birthday'] = empty($_COOKIE['birthday_value']) ? '' : $_COOKIE['birthday_value'];
   $values['sex'] = empty($_COOKIE['sex_value']) ? '' : $_COOKIE['sex_value'];
   $values['biography'] = empty($_COOKIE['biography_value']) ? '' : $_COOKIE['biography_value'];
-  $values['biography'] = empty($_COOKIE['check_value']) ? '' : $_COOKIE['check_value'];
+  $values['check'] = empty($_COOKIE['check_value']) ? '' : $_COOKIE['check_value'];
 
   include('form.php');
 }
