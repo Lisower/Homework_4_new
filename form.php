@@ -94,7 +94,7 @@ if (!empty($messages)) {
                 </label><br>
 
                 <label <?php if ($errors['check_empty']) {print 'class="error"';} ?>>
-                  <input type="checkbox" name="check" <?php if ($values['sex'] === on) {print 'checked="checked"';} ?>>
+                  <input type="checkbox" name="check" <?php if ($values['sex'] === "on") {print 'checked="checked"';} ?>>
                     С контрактом ознакомлен
                 </label><br>
 
