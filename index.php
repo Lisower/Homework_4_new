@@ -217,7 +217,7 @@ else {
 
   }
 
-  include('.gitignore');
+  include('credentials.php');
   $db = new PDO('mysql:host=localhost;dbname=u67447', $GLOBALS['user'], $GLOBALS['pass'],
     [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
   
